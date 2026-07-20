@@ -6,40 +6,42 @@
 <title>Books read this year</title>
 <style>
   * { box-sizing: border-box; }
-  body {
+  html, body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background: transparent;
     color: #1a1a1a;
-    padding: 20px;
+  }
+  body {
+    padding: 10px 12px;
   }
   .card {
-    max-width: 420px;
+    max-width: 100%;
     margin: 0 auto;
   }
   .header {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
   .label {
-    font-size: 13px;
+    font-size: 11px;
     color: #6b6b6b;
     margin: 0;
   }
   .count {
-    font-size: 40px;
+    font-size: 24px;
     font-weight: 600;
-    margin: 4px 0 0;
+    margin: 2px 0 0;
     line-height: 1;
   }
   .refresh {
     background: none;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-size: 13px;
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 11px;
     cursor: pointer;
     color: #444;
   }
@@ -47,29 +49,35 @@
   .list {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    max-height: 320px;
+    gap: 4px;
+    max-height: 160px;
     overflow-y: auto;
   }
   .row {
     display: flex;
     justify-content: space-between;
-    padding: 8px 12px;
+    padding: 5px 8px;
     border: 1px solid #eee;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+  .row span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .row span:last-child {
     color: #888;
-    font-size: 13px;
+    font-size: 11px;
     white-space: nowrap;
-    margin-left: 12px;
+    margin-left: 8px;
+    flex-shrink: 0;
   }
   .empty, .error {
-    font-size: 13px;
+    font-size: 11px;
     color: #888;
     text-align: center;
-    padding: 24px 0;
+    padding: 12px 0;
   }
   .error { color: #b3261e; }
 </style>
