@@ -1,13 +1,13 @@
 export default async function handler(req, res) {
   const NOTION_TOKEN = process.env.NOTION_TOKEN;
-  const DATABASE_ID = process.env.NOTION_DATABASE_ID;
+  const DATA_SOURCE_ID = process.env.NOTION_DATA_SOURCE_ID;
   const STATUS_PROPERTY = process.env.NOTION_STATUS_PROPERTY || "Status";
   const STATUS_VALUE = process.env.NOTION_STATUS_VALUE || "Read";
   const DATE_PROPERTY = process.env.NOTION_DATE_PROPERTY || "Date Finished";
   const YEAR = process.env.NOTION_YEAR || new Date().getFullYear().toString();
 
-  if (!NOTION_TOKEN || !DATABASE_ID) {
-    res.status(500).json({ error: "Missing NOTION_TOKEN or NOTION_DATABASE_ID env vars" });
+  if (!NOTION_TOKEN || !DATA_SOURCE_ID) {
+    res.status(500).json({ error: "Missing NOTION_TOKEN or NOTION_DATA_SOURCE_ID env vars" });
     return;
   }
 
@@ -39,12 +39,12 @@ export default async function handler(req, res) {
       if (startCursor) body.start_cursor = startCursor;
 
       const response = await fetch(
-        `https://api.notion.com/v1/databases/${DATABASE_ID}/query`,
+        `https://api.notion.com/v1/data_sources/${DATA_SOURCE_ID}/query`,
         {
           method: "POST",
           headers: {
             Authorization: `Bearer ${NOTION_TOKEN}`,
-            "Notion-Version": "2022-06-28",
+            "Notion-Version": "2025-09-03",
             "Content-Type": "application/json"
           },
           body: JSON.stringify(body)
